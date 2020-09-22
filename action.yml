@@ -25,10 +25,10 @@ on:
     branches: [ master ]
 
 env:
-  IBM_CLOUD_API_KEY: ${{ secrets.IBM_CLOUD_API_KEY }}
-  IBM_CLOUD_CF_API: ${{ secrets.IBM_CLOUD_CF_API }}
-  IBM_CLOUD_CF_ORG: ${{ secrets.IBM_CLOUD_CF_ORG }}
-  IBM_CLOUD_CF_SPACE: ${{ secrets.IBM_CLOUD_CF_SPACE }}
+  IBM_CLOUD_API_KEY: ${{ inputs.IBM_CLOUD_API_KEY }}
+  IBM_CLOUD_CF_API: ${{ inputs.IBM_CLOUD_CF_API }}
+  IBM_CLOUD_CF_ORG: ${{ inputs.IBM_CLOUD_CF_ORG }}
+  IBM_CLOUD_CF_SPACE: ${{ inputs.IBM_CLOUD_CF_SPACE }}
 
 jobs:
   deploy:
