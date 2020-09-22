@@ -1,8 +1,23 @@
 name: Deploy to IBM Cloud Foundry
+
 description: Deploy an application to Cloud Foundry on IBM Cloud
+
 branding:
   icon: upload-cloud
   color: blue
+
+inputs:
+  IBM_CLOUD_API_KEY:
+    description: IBM Cloud API key
+    required: true
+    IBM_CLOUD_CF_API:
+      description: IBM Cloud Foundry API endpoint
+      required: true
+    IBM_CLOUD_CF_ORG:
+      description: IBM Cloud Foundry organization name
+      required: true
+    IBM_CLOUD_CF_SPACE:
+      description: IBM Cloud Foundry space name
 
 on:
   push:
