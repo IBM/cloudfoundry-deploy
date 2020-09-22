@@ -30,10 +30,10 @@ runs:
       run: ibmcloud cf install
       shell: bash
     - name: Authenticate with IBM Cloud CLI
-      run: ibmcloud login --apikey "${IBM_CLOUD_API_KEY}" --no-region -g default
+      run: ibmcloud login --apikey "${{ inputs.IBM_CLOUD_API_KEY }}" --no-region -g default
       shell: bash
     - name: Target a Cloud Foundry org and space
-      run: ibmcloud target --cf-api "${IBM_CLOUD_CF_API}" -o "${IBM_CLOUD_CF_ORG}" -s "${IBM_CLOUD_CF_SPACE}"
+      run: ibmcloud target --cf-api "${{ inputs.IBM_CLOUD_CF_API }}" -o "${{ inputs.IBM_CLOUD_CF_ORG }}" -s "${{ inputs.IBM_CLOUD_CF_SPACE }}"
       shell: bash
     - name: Deploy to Cloud Foundry
       run: ibmcloud cf push
