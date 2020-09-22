@@ -1,0 +1,29 @@
+name: IBM Cloud Foundry Deploy
+
+on:
+  push:
+    branches: [ master ]
+
+env:
+  IBM_CLOUD_API_KEY: ${{ secrets.IBM_CLOUD_API_KEY }}
+  IBM_CLOUD_CF_API: ${{ secrets.IBM_CLOUD_CF_API }}
+  IBM_CLOUD_CF_ORG: ${{ secrets.IBM_CLOUD_CF_ORG }}
+  IBM_CLOUD_CF_SPACE: ${{ secrets.IBM_CLOUD_CF_SPACE }}
+
+jobs:
+  deploy:
+
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2
+      - name: Install IBM Cloud CLI
+        run: curl -fsSL https://clis.cloud.ibm.com/install/linux | sh
+      - name: Install Cloud Foundry CLI
+        run: ibmcloud cf install
+      - name: Authenticate with IBM Cloud CLI
+        run: ibmcloud login --apikey "${IBM_CLOUD_API_KEY}" --no-region -g default
+      - name: Target a Cloud Foundry org and space
+        run: ibmcloud target --cf-api "${IBM_CLOUD_CF_API}" -o "${IBM_CLOUD_CF_ORG}" -s "${IBM_CLOUD_CF_SPACE}"
+      - name: Deploy to Cloud Foundry
+        run: ibmcloud cf push
