@@ -1,5 +1,7 @@
 name: Deploy to IBM Cloud Foundry
 description: Deploy an application to Cloud Foundry on IBM Cloud
+icon: upload-cloud
+color: blue
 
 on:
   push:
