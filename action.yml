@@ -23,6 +23,14 @@ inputs:
     description: App Manifest file
     required: false
     default: manifest.yml
+  RESOURCE_GROUP:
+    description: IBM Cloud Foundry resource group
+    required: false
+    default: default
+  DISABLE_RESOURCE_GROUP:
+    description: disable the use of a resource group
+    required: false
+    default: FALSE
 
 
 runs:
@@ -35,7 +43,7 @@ runs:
       run: ibmcloud cf install
       shell: bash
     - name: Authenticate with IBM Cloud CLI
-      run: ibmcloud login --apikey "${{ inputs.IBM_CLOUD_API_KEY }}" --no-region -g default
+      run: ibmcloud login --apikey "${{ inputs.IBM_CLOUD_API_KEY }}" --no-region $([[ "${{ inputs.DISABLE_RESOURCE_GROUP }}" != "TRUE" ]] && echo "-g ${{ inputs.RESOURCE_GROUP }}")
       shell: bash
     - name: Target a Cloud Foundry org and space
       run: ibmcloud target --cf-api "${{ inputs.IBM_CLOUD_CF_API }}" -o "${{ inputs.IBM_CLOUD_CF_ORG }}" -s "${{ inputs.IBM_CLOUD_CF_SPACE }}"
