@@ -10,11 +10,28 @@ GitHub action for deploying applications to IBM Cloud Foundry.
 
 ## Setup
 
-### Workflow
+### Parameters
 
-It's recommended that you use [GitHub encrypted secrets](https://docs.github.com/en/actions/reference/encrypted-secrets) to store `IBM_CLOUD_API_KEY`, `IBM_CLOUD_CF_API`, `IBM_CLOUD_CF_ORG` and `IBM_CLOUD_CF_SPACE` information.
+**DISCLAIMER**: It's recommended that you use [GitHub encrypted secrets](https://docs.github.com/en/actions/reference/encrypted-secrets) to keep your sensitive data safe.
 
-#### Example
+* IBM_CLOUD_API_KEY
+
+  The IBM Cloud API key is necessary to authenticate this GitHub Action with IBM. Details on how to create an API key can be found [here](https://cloud.ibm.com/docs/account?topic=account-userapikey#create_user_key).
+
+* IBM_CLOUD_CF_API
+
+  The IBM Cloud Foundry API endpoint is used to connect and to deploy the application. A list of supported regions and API Endpoints can be found [here](https://cloud.ibm.com/docs/cloud-foundry-public?topic=cloud-foundry-public-endpoints).
+
+* IBM_CLOUD_CF_SPACE
+
+  Apps in an IBM Cloud Foundry Enterprise Environment are scoped within specific spaces. A space exists within a specific organziation.
+A guide on how to create organzizations and spaces can be found [here](https://cloud.ibm.com/docs/cloud-foundry?topic=cloud-foundry-create_orgs).
+
+* IBM_CLOUD_CF_ORG
+
+  The Cloud Foundry organization name in which the `IBM_CLOUD_CF_SPACE` exists.
+
+### Workflow Example
 
 ```yml
 name: Deploy to IBM Cloud Foundry
