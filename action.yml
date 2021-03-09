@@ -19,6 +19,11 @@ inputs:
   IBM_CLOUD_CF_SPACE:
     description: IBM Cloud Foundry space name
     required: true
+  APP_MANIFEST_FILE:
+    description: App Manifest file
+    required: false
+    default: manifest.yml
+
 
 runs:
   using: "composite"
@@ -36,5 +41,5 @@ runs:
       run: ibmcloud target --cf-api "${{ inputs.IBM_CLOUD_CF_API }}" -o "${{ inputs.IBM_CLOUD_CF_ORG }}" -s "${{ inputs.IBM_CLOUD_CF_SPACE }}"
       shell: bash
     - name: Deploy to Cloud Foundry
-      run: ibmcloud cf push
+      run: ibmcloud cf push -f "${{ inputs.APP_MANIFEST_FILE }}"
       shell: bash

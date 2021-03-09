@@ -1,6 +1,6 @@
 # IBM Cloud Foundry Deploy
 
-GitHub action for deploying applications to IBM Cloud Foundry.
+GitHub action for deploying applications to IBM Cloud Foundry using an App Manifest file.
 
 ## Prerequisites
 
@@ -31,6 +31,18 @@ A guide on how to create organzizations and spaces can be found [here](https://c
 
   The Cloud Foundry organization name in which the `IBM_CLOUD_CF_SPACE` exists.
 
+* APP_MANIFEST_FILE (optional, default: `manifest.yml`)
+
+  An App Manifest file contains metadata necessary for the deployment like the name of the application which should be deployed. They provide consistency, reproducibility and can be used for customizations like amount of instances, disk space limit, and memory limit. For a full list of attributes you can specify in an application manifest, see [App Manifest Attribute Reference](https://docs.cloudfoundry.org/devguide/deploy-apps/manifest-attributes.html).
+  
+  Example Manifest file:
+  
+  ```yml
+  ---
+  applications:
+  - name: YOUR-APP
+  ```
+
 ### Workflow Example
 
 ```yml
@@ -53,18 +65,3 @@ jobs:
           IBM_CLOUD_CF_SPACE: ${{ secrets.IBM_CLOUD_CF_SPACE }}
 ```
 
-### Application manifest
-
-This action uses a manifest file to deploy the application. Manifests provide consistency, reproducibility and can be used for customizations like number of instances, disk space limit, and memory limit. For a full list of attributes you can specify in an application manifest, see [App Manifest Attribute Reference](https://docs.cloudfoundry.org/devguide/deploy-apps/manifest-attributes.html).
-
-### Example
-
-Create a `manifest.yml` file in the root directory of your application with the follogin content:
-
-```yml
----
-applications:
-- name: YOUR-APP
-```
-
-Where `YOUR-APP` is the name of your application.
