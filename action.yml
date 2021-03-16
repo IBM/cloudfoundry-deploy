@@ -27,7 +27,6 @@ inputs:
     description: IBM Cloud Foundry resource group
     required: false
 
-
 runs:
   using: "composite"
   steps:

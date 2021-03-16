@@ -47,7 +47,6 @@ A guide on how to create organzizations and spaces can be found [here](https://c
 
   A resource group is a way for you to organize your account resources in customizable groupings. Details about resource groups and how to set them up can be found [here](https://cloud.ibm.com/docs/account?topic=cli-ibmcloud_commands_resource)
 
-
 ### Workflow Example
 
 ```yml
