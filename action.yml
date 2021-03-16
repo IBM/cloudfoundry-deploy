@@ -26,12 +26,6 @@ inputs:
   RESOURCE_GROUP:
     description: IBM Cloud Foundry resource group
     required: false
-    default: default
-  DISABLE_RESOURCE_GROUP:
-    description: disable the use of a resource group
-    required: false
-    default: FALSE
-
 
 runs:
   using: "composite"
@@ -43,7 +37,7 @@ runs:
       run: ibmcloud cf install
       shell: bash
     - name: Authenticate with IBM Cloud CLI
-      run: ibmcloud login --apikey "${{ inputs.IBM_CLOUD_API_KEY }}" --no-region $([[ "${{ inputs.DISABLE_RESOURCE_GROUP }}" != "TRUE" ]] && echo "-g ${{ inputs.RESOURCE_GROUP }}")
+      run: ibmcloud login --apikey "${{ inputs.IBM_CLOUD_API_KEY }}" --no-region $( [[ ! -z "${{ inputs.RESOURCE_GROUP }}" ]] && echo "-g ${{ inputs.RESOURCE_GROUP }}")
       shell: bash
     - name: Target a Cloud Foundry org and space
       run: ibmcloud target --cf-api "${{ inputs.IBM_CLOUD_CF_API }}" -o "${{ inputs.IBM_CLOUD_CF_ORG }}" -s "${{ inputs.IBM_CLOUD_CF_SPACE }}"

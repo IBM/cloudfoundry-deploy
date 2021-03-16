@@ -43,13 +43,9 @@ A guide on how to create organzizations and spaces can be found [here](https://c
   - name: YOUR-APP
   ```
 
-* RESOURCE_GROUP (optional, default: `default`)
-  
+* RESOURCE_GROUP (optional)
+
   A resource group is a way for you to organize your account resources in customizable groupings. Details about resource groups and how to set them up can be found [here](https://cloud.ibm.com/docs/account?topic=cli-ibmcloud_commands_resource)
-
-* DISABLE_RESOURCE_GROUP (optional, default: `FALSE`)
-
-  If you don't want to use a resource group set this input to `TRUE`. Then the `RESOURCE_GROUP` will not be used.
 
 ### Workflow Example
 
