@@ -25,7 +25,7 @@ GitHub action for deploying applications to IBM Cloud Foundry using an App Manif
 * IBM_CLOUD_CF_SPACE
 
   Apps in an IBM Cloud Foundry Enterprise Environment are scoped within specific spaces. A space exists within a specific organziation.
-A guide on how to create organzizations and spaces can be found [here](https://cloud.ibm.com/docs/cloud-foundry?topic=cloud-foundry-create_orgs).
+A guide on how to create organizations and spaces can be found [here](https://cloud.ibm.com/docs/cloud-foundry?topic=cloud-foundry-create_orgs).
 
 * IBM_CLOUD_CF_ORG
 
@@ -42,6 +42,10 @@ A guide on how to create organzizations and spaces can be found [here](https://c
   applications:
   - name: YOUR-APP
   ```
+
+* APP_VARS_FILE (optional)
+
+  Use this option to supply a variables file when pushing the application. The App Manifest file can contain variables for deployment to different environments, using the `((VARIABLE-NAME))` syntax. The variables are resolved at push time using this variables file, if supplied. For more on how to set up variables, see the ['Add Variables to a Manifest' section](https://docs.cloudfoundry.org/devguide/deploy-apps/manifest-attributes.html#-add-variables-to-a-manifest) of the App Manifest Attribute Reference.
 
 * RESOURCE_GROUP (optional)
 

@@ -23,6 +23,9 @@ inputs:
     description: App Manifest file
     required: false
     default: manifest.yml
+  APP_VARS_FILE:
+    description: App variables file
+    required: false
   RESOURCE_GROUP:
     description: IBM Cloud Foundry resource group
     required: false
@@ -43,5 +46,5 @@ runs:
       run: ibmcloud target --cf-api "${{ inputs.IBM_CLOUD_CF_API }}" -o "${{ inputs.IBM_CLOUD_CF_ORG }}" -s "${{ inputs.IBM_CLOUD_CF_SPACE }}"
       shell: bash
     - name: Deploy to Cloud Foundry
-      run: ibmcloud cf push -f "${{ inputs.APP_MANIFEST_FILE }}"
+      run: ibmcloud cf push -f "${{ inputs.APP_MANIFEST_FILE }}" $( [[ ! -z "${{ inputs.APP_VARS_FILE }}" ]] && echo "--vars-file ${{ inputs.APP_VARS_FILE }}")
       shell: bash
